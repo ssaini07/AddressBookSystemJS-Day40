@@ -53,7 +53,7 @@ function getData() {
 
     return addressBook;
 }
-/*
+
 function findExistingContact() {
 
     let firstName = prompts("Enter first name to find the record: ");
@@ -77,7 +77,7 @@ function findExistingContact() {
     }
 }
 findExistingContact();
-*/
+
 
 //UC => 5
 function deletePersonWithName() {
@@ -101,3 +101,14 @@ function deletePersonWithName() {
     }
 }
 deletePersonWithName();
+
+//UC => 6
+function countNumberOfContacts() {
+    let displayCount = prompts("Want to display number of contacts? then Press 1 for display: ");
+    if (displayCount == 1) {
+        console.log("Number of contacts in an address book: ",
+            newAddressBookArray.reduce(count => count + 1, 0));
+    }
+}
+
+countNumberOfContacts();
