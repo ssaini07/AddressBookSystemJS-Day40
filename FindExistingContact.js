@@ -53,7 +53,7 @@ function getData() {
 
     return addressBook;
 }
-/*
+
 function findExistingContact() {
 
     let firstName = prompts("Enter first name to find the record: ");
@@ -77,7 +77,7 @@ function findExistingContact() {
     }
 }
 findExistingContact();
-*/
+
 
 //UC => 5
 function deletePersonWithName() {
