@@ -53,7 +53,7 @@ function getData() {
 
     return addressBook;
 }
-
+/*
 function findExistingContact() {
 
     let firstName = prompts("Enter first name to find the record: ");
@@ -77,3 +77,27 @@ function findExistingContact() {
     }
 }
 findExistingContact();
+*/
+
+//UC => 5
+function deletePersonWithName() {
+    let firstName = prompts("Enter first name to find the record: ");
+    let obj = newAddressBookArray.find(address => {
+        if (address.firstName == firstName) {
+            return true;
+        }
+        index++;
+    });
+    if (newAddressBookArray.length === index) {
+        console.log("Record not found");
+        console.log("**************************************");
+    } else {
+        console.log("Record found at: " + index);
+        askAgain = prompts("Want to delete the record? Type yes for delete no for exit: ").toLowerCase();
+        if (askAgain == "yes") {
+            newAddressBookArray.splice(index, 1);
+            console.log("Data after deletion: ", newAddressBookArray);
+        }
+    }
+}
+deletePersonWithName();
