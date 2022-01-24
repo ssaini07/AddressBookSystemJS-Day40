@@ -4,17 +4,20 @@ const prompts = require("prompt-sync")();
 let index = 0;
 
 function addNewAddress() {
+    if (!newAddressBookArray.length) {
+        console.log("This array is empty");
+    } else {
+        console.log("This array has some elements already");
+    }
     askAgain = prompts("Enter yes to add the record OR no for exit: ").toLowerCase();
     if (askAgain == "yes") {
         let data = getData();
-
         newAddressBookArray.push(data);
         console.log(newAddressBookArray);
         addNewAddress();
     }
 }
 addNewAddress();
-
 
 //UC => 4
 function getData() {
@@ -112,3 +115,34 @@ function countNumberOfContacts() {
 }
 
 countNumberOfContacts();
+
+//UC => 7
+
+function noDuplicateEntry() {
+    index = 0;
+    let firstName = prompts("Enter first name to find the record: ");
+    let obj = newAddressBookArray.find(address => {
+        if (address.firstName == firstName) {
+            return true;
+        }
+        index++;
+    });
+    if (newAddressBookArray.length === index) {
+        console.log("Sorry person with: ", firstName, "name already present try to add another one");
+        console.log("**************************************");
+    } else {
+        console.log("Duplicate record is present at: " + index);
+        askAgain = prompts("Want to add the data? Type yes for add no for exit: ").toLowerCase();
+        if (askAgain == "yes") {
+            let data = getData();
+            newAddressBookArray.push(data);
+            console.log(newAddressBookArray);
+            // addNewAddress();
+        } else {
+            console.log("Sorry wrong choice: ");
+        }
+
+    }
+}
+
+noDuplicateEntry();
